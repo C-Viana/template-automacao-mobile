@@ -22,13 +22,13 @@ public class CtaAppSwipeListSteps {
 		Assert.assertEquals("Opção 5 (-)", page.getTxtListOpcoes().get(4));
 		Assert.assertEquals("Opção 6 (+)", page.getTxtListOpcoes().get(5));
 		Assert.assertEquals("Opção 8 (-)", page.getTxtListOpcoes().get(7));
-	    ReportManager.setTestStep( ReportManager.getScenarioStatus(), "Configurações padrão da tela inicial");
+	    ReportManager.setTestStep( "Configurações padrão da tela inicial");
 	    
 		page.resetItem(2);
 		page.resetItem(5);
 		page.resetItem(6);
 		page.resetItem(8);
-	    ReportManager.setTestStep( ReportManager.getScenarioStatus(), "Todas as opções foram redefinidas");
+	    ReportManager.setTestStep( "Todas as opções foram redefinidas");
 		
 		page.swipeLeftOpcao(1);
 		page.setPositivo();
@@ -38,7 +38,7 @@ public class CtaAppSwipeListSteps {
 		page.setPositivo();
 		page.swipeLeftOpcao(7);
 		page.setNegativo();
-	    ReportManager.setTestStep( ReportManager.getScenarioStatus(), "Então realizo as devidas interações swipe");
+	    ReportManager.setTestStep( "Então realizo as devidas interações swipe");
 	}
 	
 }

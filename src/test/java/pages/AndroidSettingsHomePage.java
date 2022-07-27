@@ -72,7 +72,7 @@ public class AndroidSettingsHomePage extends AndroidSettingsHome {
 				StaticResources.IMAGE_RESOURCES_DIR +"\\"+ itemTitle.get(indexDoIconeNaLista)+".png", 
 				percetualDeDiferencaTolerado);
 		if( result > percetualDeDiferencaTolerado) {
-			ReportManager.setTestInfoStep("Erro ao comparar a imagem "+itemTitle.get(indexDoIconeNaLista)+".\nTolerância aceita (%): " + percetualDeDiferencaTolerado+"Diferença encontrada (%): "+result);
+			ReportManager.setTestLogAndScreenshot("Erro ao comparar a imagem "+itemTitle.get(indexDoIconeNaLista)+".\nTolerância aceita (%): " + percetualDeDiferencaTolerado+"Diferença encontrada (%): "+result);
 		}
 		return result >= 0.0 && result <= percetualDeDiferencaTolerado;
 	}

@@ -19,9 +19,9 @@ public class CtaAppHibridoSteps {
 		page.setWebviewContext();
 		page.setEmail();
 		page.setSenha();
-		ReportManager.setTestStep( ReportManager.getScenarioStatus(), "Informações de login inseridas");
+		ReportManager.setTestStep( "Informações de login inseridas");
 		page.clickEntrar();
 		Assert.assertTrue( page.getAlertText().startsWith("Bem vindo, ") );
-		ReportManager.setTestStep( ReportManager.getScenarioStatus(), "Então realizo login na tela híbrida");
+		ReportManager.setTestStep( "Então realizo login na tela híbrida");
 	}
 }

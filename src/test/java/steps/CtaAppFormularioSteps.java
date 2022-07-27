@@ -24,13 +24,13 @@ public class CtaAppFormularioSteps {
 	    page.escreverTextoNoCampoNome(texto);
 	    Assert.assertFalse( "O texto esperado neste campo não foi encontrado!", page.getInputNomeText().isEmpty() );
 		Assert.assertEquals(texto, page.getInputNomeText());
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Então preencho o campo de texto com o valor " + texto);
+	    ReportManager.setTestStep("Então preencho o campo de texto com o valor " + texto);
 	}
 	
 	@Then("seleciono a opção {string} no combo")
 	public void selecionoAOpcaoOPTIONNoCombo(String opt) {
 	    Assert.assertEquals(page.getExpectedTxtComboConsole(opt), page.selecionarOpcaoComboConsole(opt));
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "E seleciono a opção "+opt+" no combo");
+	    ReportManager.setTestStep("E seleciono a opção "+opt+" no combo");
 	}
 	
 	@Then("valido a ativação do checkbox")
@@ -39,7 +39,7 @@ public class CtaAppFormularioSteps {
 	    Assert.assertEquals( true, page.getChechboxStatus() );
 		page.alterarChechbox();
 	    Assert.assertEquals( false, page.getChechboxStatus() );
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Então valido a ativação do checkbox");
+	    ReportManager.setTestStep("Então valido a ativação do checkbox");
 	}
 	
 	@Then("valido a desativação do switch")
@@ -48,7 +48,7 @@ public class CtaAppFormularioSteps {
 	    Assert.assertEquals( false, page.getSwitchStatus() );
 		page.alterarSwitch();
 	    Assert.assertEquals( true, page.getSwitchStatus() );
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Então valido a desativação do switch");
+	    ReportManager.setTestStep("Então valido a desativação do switch");
 	}
 	
 	@Then("preencher todo o formulário")
@@ -62,7 +62,7 @@ public class CtaAppFormularioSteps {
 	    page.alterarData(form.get("DATA"));
 	    page.alterarHora(form.get("HORA"));
 	    page.salvar();
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Então preencher todo o formulário");
+	    ReportManager.setTestStep("Então preencher todo o formulário");
 	}
 	
 	@And("valido que dados informados foram cadastrados")
@@ -75,7 +75,7 @@ public class CtaAppFormularioSteps {
 	    Assert.assertEquals("Checkbox: "+((form.get("CHECKBOX").toLowerCase().equals("true")) ? "Marcado" : "Desmarcado"), page.getResultadosDoFormulario().get(4).getText());
 	    Assert.assertEquals("Data: "+form.get("DATA").replace("/0", "/"), page.getResultadosDoFormulario().get(5).getText());
 	    Assert.assertEquals("Hora: "+form.get("HORA"), page.getResultadosDoFormulario().get(6).getText());
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "E valido que dados informados foram cadastrados");
+	    ReportManager.setTestStep("E valido que dados informados foram cadastrados");
 	}
 
 }

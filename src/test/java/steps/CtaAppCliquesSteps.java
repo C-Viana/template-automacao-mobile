@@ -17,18 +17,18 @@ public class CtaAppCliquesSteps {
 	@Then("realizo as devidas interações de clique")
 	public void realizoAsDevidasInteracoesDeClique() {
 	    page.confirmarCarregamentoDaTela();
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Tela Aberta");
+	    ReportManager.setTestStep("Tela Aberta");
 	    page.realizarCliqueLongo();
 	    Assert.assertEquals("Clique Longo", page.getResultado());
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Clique longo realizado com sucesso");
+	    ReportManager.setTestStep("Clique longo realizado com sucesso");
 	    page.realizarCliqueDuplo();
 	    Assert.assertEquals("Duplo Clique", page.getResultado());
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Clique duplo realizado com sucesso");
+	    ReportManager.setTestStep("Clique duplo realizado com sucesso");
 	    page.realizarCliqueDuploLento();
 	    Assert.assertEquals("Duplo Clique lento", page.getResultado());
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Clique duplo lento realizado com sucesso");
+	    ReportManager.setTestStep("Clique duplo lento realizado com sucesso");
 	    page.limparCampo();
 	    Assert.assertEquals("", page.getResultado());
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Então realizo as devidas interações de clique");
+	    ReportManager.setTestStep("Então realizo as devidas interações de clique");
 	}
 }

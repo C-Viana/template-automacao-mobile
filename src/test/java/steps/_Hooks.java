@@ -34,7 +34,7 @@ public class _Hooks {
     @After
     public void endTest(Scenario scenario) {
         if( ReportManager.getScenarioStatus() == Status.FAILED )
-        	ReportManager.setTestStep( ReportManager.getScenarioStatus(), "Erro!");
+        	ReportManager.setTestStep( "Erro!");
         
         ReportManager.endTest();
         if (!StaticResources.suite_test)

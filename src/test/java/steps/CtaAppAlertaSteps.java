@@ -18,7 +18,7 @@ public class CtaAppAlertaSteps {
 	@And("visualizar o alerta de confirmação")
 	public void visualizarOAlertaDeConfirmacao() {
 	    page.clicarBotaoAlertaConfirm();
-	    ReportManager.setTestStep(ReportManager.getScenarioStatus(), "E visualizar o alerta de confirmação");
+	    ReportManager.setTestStep("E visualizar o alerta de confirmação");
 	}
 	
 	@Then("verifico que é possível interagir com os botões deste alerta")
@@ -27,7 +27,7 @@ public class CtaAppAlertaSteps {
 		Assert.assertEquals( "Confirma a operação?", page.getAlertBody() );
 		Assert.assertEquals( "CONFIRMAR", page.getBtnAlertConfirm().getText() );
 		page.getBtnAlertConfirm().click();
-		ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Então verifico que é possível interagir com os botões deste alerta");
+		ReportManager.setTestStep("Então verifico que é possível interagir com os botões deste alerta");
 	}
 	
 	@And("confirmo operação de confirmação")
@@ -35,10 +35,10 @@ public class CtaAppAlertaSteps {
 		Assert.assertEquals( "Info", page.getAlertTitle() );
 		Assert.assertEquals( "Confirmado", page.getAlertBody() );
 		Assert.assertEquals( "SAIR", page.getBtnAlertCancel().getText() );
-		ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Clicando em \"SAIR\"");
+		ReportManager.setTestStep("Clicando em \"SAIR\"");
 		page.getBtnAlertCancel().click();
 		page.waitAlertToClose();
-		ReportManager.setTestStep(ReportManager.getScenarioStatus(), "E confirmo operação de confirmação");
+		ReportManager.setTestStep("E confirmo operação de confirmação");
 	}
 	
 }

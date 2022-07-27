@@ -21,7 +21,7 @@ public class CtaAppAbasSteps {
 			Assert.assertEquals( page.getTxtEsperadoAba1(), page.getAbaBodyText().getText().trim() );
 		else
 			Assert.assertEquals( page.getTxtEsperadoAba2(), page.getAbaBodyText().getText().trim() );
-			ReportManager.setTestStep(ReportManager.getScenarioStatus(), "E confirmar que a tela inicial é da aba " + abaId);
+			ReportManager.setTestStep("E confirmar que a tela inicial é da aba " + abaId);
 	}
 	
 	@Then("troco para a aba {int}")
@@ -34,7 +34,7 @@ public class CtaAppAbasSteps {
 			page.clicarAba2();
 			Assert.assertEquals( page.getTxtEsperadoAba2(), page.getAbaBodyText().getText().trim() );
 		}
-		ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Então troco para a aba " + abaId);
+		ReportManager.setTestStep("Então troco para a aba " + abaId);
 	}
 	
 }

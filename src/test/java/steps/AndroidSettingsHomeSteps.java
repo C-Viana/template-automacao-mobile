@@ -24,7 +24,7 @@ public class AndroidSettingsHomeSteps {
 	@Given("que acessei a tela de configurações")
 	public void acesseiTelaConfiguracoes() {
 		page.getInSearchBar();
-		ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Dado que acessei a tela de configurações");
+		ReportManager.setTestStep("Dado que acessei a tela de configurações");
 	}
 	
 	@Then("valido a lista de menus disponível")
@@ -33,20 +33,20 @@ public class AndroidSettingsHomeSteps {
 		for (int i = 0; i < page.getTitlesExpectedTexts().size(); i++) {
 			Assert.assertEquals(page.getTitlesExpectedTexts().get(i), titles.get(i));
 		}
-		ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Então valido a lista de menus disponível");
+		ReportManager.setTestStep("Então valido a lista de menus disponível");
 	}
 	
 	@And("identificar todos os ícones da lista de configurações")
 	public void identificarTodasOsIconesDaListaDeConfiguracoes() {
 		icons = new ArrayList<WebElement>();
-		ReportManager.setTestInfoStep("Verificando ícones na lista...");
+		ReportManager.setTestLogAndScreenshot("Verificando ícones na lista...");
 		for (int i = 0; i < page.getTitlesExpectedTexts().size(); i++) {
 			//General.scrollToElement_byText(page.getTitlesExpectedTexts().get(i));
 			page.searchSettingsItem(i);
-			ReportManager.setTestInfoStep("Verificando ícones na lista...");
+			ReportManager.setTestLogAndScreenshot("Verificando ícones na lista...");
 			icons.add( page.getElementIcone(i) );
 		}
-		ReportManager.setTestStep(ReportManager.getScenarioStatus(), "E identificar todos os ícones da lista de configurações");
+		ReportManager.setTestStep("E identificar todos os ícones da lista de configurações");
 	}
 	
 	@Then("valido os ícones estão de acordo com o esperado")
@@ -57,7 +57,7 @@ public class AndroidSettingsHomeSteps {
 			page.ajustarElementoNaTela(icons.get(i));
 			Assert.assertTrue( "A imagem "+page.getTitlesExpectedTexts().get(i)+" não é equivalente à imagem de referência", page.validarIcones(icons.get(i), i, 0.0) );
 		}
-		ReportManager.setTestStep(ReportManager.getScenarioStatus(), "Então valido os ícones estão de acordo com o esperado");
+		ReportManager.setTestStep("Então valido os ícones estão de acordo com o esperado");
 	}
 	
 	
