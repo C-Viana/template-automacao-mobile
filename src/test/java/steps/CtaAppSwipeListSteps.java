@@ -16,6 +16,7 @@ public class CtaAppSwipeListSteps {
 	
 	@Then("realizo as devidas interações swipe")
 	public void realizoAsDevidasInteraçõesSwipe() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 		page.validarTelaCarregada();
 		Assert.assertEquals(8, page.getListSizeOpcoes());
 		Assert.assertEquals("Opção 2 (+)", page.getTxtListOpcoes().get(1));
@@ -38,7 +39,6 @@ public class CtaAppSwipeListSteps {
 		page.setPositivo();
 		page.swipeLeftOpcao(7);
 		page.setNegativo();
-	    ReportManager.setTestStep( "Então realizo as devidas interações swipe");
 	}
 	
 }

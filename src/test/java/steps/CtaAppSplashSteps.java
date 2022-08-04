@@ -16,9 +16,9 @@ public class CtaAppSplashSteps  {
 	
 	@Then("valido a tela splash e aguardo retorno para a home")
 	public void validoATelaSplashEAguardoRetornoParaAHome() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 	    Assert.assertEquals( "Esta é uma tela Splash!", page.getSplashScreenText() );
 	    page.retornoParaTelaHome();
-	    ReportManager.setTestStep("Então valido a tela splash e aguardo retorno para a home");
 	}
 
 }

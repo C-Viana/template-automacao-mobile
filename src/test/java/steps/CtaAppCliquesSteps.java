@@ -16,6 +16,7 @@ public class CtaAppCliquesSteps {
 	
 	@Then("realizo as devidas interações de clique")
 	public void realizoAsDevidasInteracoesDeClique() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 	    page.confirmarCarregamentoDaTela();
 	    ReportManager.setTestStep("Tela Aberta");
 	    page.realizarCliqueLongo();
@@ -29,6 +30,5 @@ public class CtaAppCliquesSteps {
 	    ReportManager.setTestStep("Clique duplo lento realizado com sucesso");
 	    page.limparCampo();
 	    Assert.assertEquals("", page.getResultado());
-	    ReportManager.setTestStep("Então realizo as devidas interações de clique");
 	}
 }

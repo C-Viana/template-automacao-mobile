@@ -16,6 +16,7 @@ public class CtaAppDragAndDropSteps {
 	
 	@Then("realizo as alterações de posicionamento dos elementos em tela")
 	public void realizoAsAlteracoesDePosicionamentoDosElementosEmTela() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 		page.aguardarTelaCaregar();
 		Assert.assertEquals( 6, page.getListTextos().size() );
 		ReportManager.setTestStep("Tela inicial carregada");
@@ -31,8 +32,6 @@ public class CtaAppDragAndDropSteps {
 		
 		page.arrastarElementoAParaElementoB( page.getListTextos().get(elA), page.getListTextos().get(elB));
 		ReportManager.setTestStep("Alterados os textos " + page.getListTextos().get(elA) + "" + page.getListTextos().get(elB));
-		
-		ReportManager.setTestStep("Então realizo as alterações de posicionamento dos elementos em tela");
 	}
 	
 }

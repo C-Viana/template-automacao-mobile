@@ -17,28 +17,28 @@ public class CtaAppAlertaSteps {
 	
 	@And("visualizar o alerta de confirmação")
 	public void visualizarOAlertaDeConfirmacao() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 	    page.clicarBotaoAlertaConfirm();
-	    ReportManager.setTestStep("E visualizar o alerta de confirmação");
 	}
 	
 	@Then("verifico que é possível interagir com os botões deste alerta")
 	public void verificoQueEPossivelInteragirComOsBotoesDesteAlerta() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 		Assert.assertEquals( "Info", page.getAlertTitle() );
 		Assert.assertEquals( "Confirma a operação?", page.getAlertBody() );
 		Assert.assertEquals( "CONFIRMAR", page.getBtnAlertConfirm().getText() );
 		page.getBtnAlertConfirm().click();
-		ReportManager.setTestStep("Então verifico que é possível interagir com os botões deste alerta");
 	}
 	
 	@And("confirmo operação de confirmação")
 	public void confirmoOperacaoDeConfirmacao() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 		Assert.assertEquals( "Info", page.getAlertTitle() );
 		Assert.assertEquals( "Confirmado", page.getAlertBody() );
 		Assert.assertEquals( "SAIR", page.getBtnAlertCancel().getText() );
 		ReportManager.setTestStep("Clicando em \"SAIR\"");
 		page.getBtnAlertCancel().click();
 		page.waitAlertToClose();
-		ReportManager.setTestStep("E confirmo operação de confirmação");
 	}
 	
 }

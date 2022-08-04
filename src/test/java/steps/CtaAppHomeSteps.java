@@ -15,14 +15,14 @@ public class CtaAppHomeSteps {
 	
 	@Given("que acessei o app CTA")
 	public void acesseiOAppCTA() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 	    System.out.println("Inicializando o teste do app CTA");
-	    ReportManager.setTestStep("Dado que acessei o app CTA");
 	}
 	
 	@When("selecionar a opção {string}")
 	public void selecionarAOpcao(String string) {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString().replace("{string}", string));
 	    page.acessarTela( string );
-	    ReportManager.setTestStep("E selecionar a opção " + string);
 	}
 	
 	

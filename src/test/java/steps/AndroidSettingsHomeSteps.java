@@ -23,21 +23,22 @@ public class AndroidSettingsHomeSteps {
 	
 	@Given("que acessei a tela de configurações")
 	public void acesseiTelaConfiguracoes() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 		page.getInSearchBar();
-		ReportManager.setTestStep("Dado que acessei a tela de configurações");
 	}
 	
 	@Then("valido a lista de menus disponível")
 	public void validoListaMenisDisponiveis() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 		List<String> titles = page.getAllRecyclerViewItemsText(page.getListTitles());
 		for (int i = 0; i < page.getTitlesExpectedTexts().size(); i++) {
 			Assert.assertEquals(page.getTitlesExpectedTexts().get(i), titles.get(i));
 		}
-		ReportManager.setTestStep("Então valido a lista de menus disponível");
 	}
 	
 	@And("identificar todos os ícones da lista de configurações")
 	public void identificarTodasOsIconesDaListaDeConfiguracoes() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 		icons = new ArrayList<WebElement>();
 		ReportManager.setTestLogAndScreenshot("Verificando ícones na lista...");
 		for (int i = 0; i < page.getTitlesExpectedTexts().size(); i++) {
@@ -46,18 +47,17 @@ public class AndroidSettingsHomeSteps {
 			ReportManager.setTestLogAndScreenshot("Verificando ícones na lista...");
 			icons.add( page.getElementIcone(i) );
 		}
-		ReportManager.setTestStep("E identificar todos os ícones da lista de configurações");
 	}
 	
 	@Then("valido os ícones estão de acordo com o esperado")
 	public void validoOsÍconesEstaoDeAcordoComOEsperado() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 		page.retornarAoTopo();
 		ReportManager.setTestLog("Validando imagens da lista com os arquivos de referência.");
 		for (int i = 0; i < icons.size(); i++) {
 			page.ajustarElementoNaTela(icons.get(i));
 			Assert.assertTrue( "A imagem "+page.getTitlesExpectedTexts().get(i)+" não é equivalente à imagem de referência", page.validarIcones(icons.get(i), i, 0.0) );
 		}
-		ReportManager.setTestStep("Então valido os ícones estão de acordo com o esperado");
 	}
 	
 	

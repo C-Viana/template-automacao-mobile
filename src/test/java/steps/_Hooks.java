@@ -4,10 +4,10 @@ import common.StaticResources;
 import driver.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
-import io.cucumber.java.Status;
 import reporter.ReportManager;
 
 public class _Hooks {
@@ -26,20 +26,25 @@ public class _Hooks {
     @Before
     public void startTest(Scenario scenario) {
     	ReportManager.setScenario(scenario);
-        ReportManager.setResultPath(scenario.getUri().toString(), ReportManager.getScenario().getName());
+        ReportManager.setFeature(ReportManager.getFeatureName(scenario.getUri().toString()));
+        ReportManager.setResultPath(scenario.getUri().toString(), scenario.getName());
         ReportManager.startReport();
-        ReportManager.startTest(ReportManager.getScenario().getName());
+        String prefix = (StaticResources.suite_test) ? ReportManager.getFeature() + " - " : "";
+        ReportManager.startTest(prefix + scenario.getName());
     }
 
     @After
     public void endTest(Scenario scenario) {
-        if( ReportManager.getScenarioStatus() == Status.FAILED )
-        	ReportManager.setTestStep( "Erro!");
-        
         ReportManager.endTest();
         if (!StaticResources.suite_test)
             ReportManager.endReport();
         
         Driver.close();
     }
+
+    @AfterStep
+    public void afterStep() {
+        ReportManager.setTestStep();
+    }
+    
 }

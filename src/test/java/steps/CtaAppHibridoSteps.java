@@ -16,12 +16,12 @@ public class CtaAppHibridoSteps {
 	
 	@Then("realizo login na tela híbrida")
 	public void realizoLoginTelaHibrida() {
+    	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 		page.setWebviewContext();
 		page.setEmail();
 		page.setSenha();
 		ReportManager.setTestStep( "Informações de login inseridas");
 		page.clickEntrar();
 		Assert.assertTrue( page.getAlertText().startsWith("Bem vindo, ") );
-		ReportManager.setTestStep( "Então realizo login na tela híbrida");
 	}
 }

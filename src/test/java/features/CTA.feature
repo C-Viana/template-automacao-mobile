@@ -19,8 +19,8 @@ Feature: Treinamento Appium com o app CTA
     Examples:
     |OPTION					|
     |XBox One				|
-    |PS4						|
-    |Nintendo Switch|
+    |PS4					|
+    |Nintendo Switch		|
 
 
   @cta003 @cta_form

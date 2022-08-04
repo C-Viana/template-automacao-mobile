@@ -190,8 +190,7 @@ public class BasePage {
 		}
 	}
 
-	public static void dragAndDrop(Point originCoords, Point destinationCoords, int holdTimeInMillis,
-			int dragTimeInMillis) {
+	public static void dragAndDrop(Point originCoords, Point destinationCoords, int holdTimeInMillis, int dragTimeInMillis) {
 		try {
 			PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
 			Sequence sequence = new Sequence(finger, 1);
@@ -587,7 +586,7 @@ public class BasePage {
 	 */
 	public static void waitFor(Integer timeInSeconds) {
 		try {
-			TimeUnit.MINUTES.sleep( (timeInSeconds == null) ? StaticResources.DEFAULT_WAIT_TIME : timeInSeconds );
+			TimeUnit.SECONDS.sleep( (timeInSeconds == null) ? StaticResources.DEFAULT_WAIT_TIME : timeInSeconds );
 //			Thread.sleep((timeInSeconds == null) ? StaticResources.DEFAULT_WAIT_TIME : timeInSeconds * 1000);
 		} catch (InterruptedException e) {
 			Logger.getLogger(BasePage.class.getName()).log(Level.WARNING, "Erro para utilizar Thread.sleep()", e);
