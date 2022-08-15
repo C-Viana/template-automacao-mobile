@@ -12,4 +12,4 @@ Feature: Tela de configurações do Android
   Scenario: Validar ícones na home de configurações
     Given que acessei a tela de configurações
     And identificar todos os ícones da lista de configurações
-    Then valido os ícones estão de acordo com o esperado
+    Then valido que os ícones estão de acordo com o esperado

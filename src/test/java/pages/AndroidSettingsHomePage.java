@@ -18,6 +18,7 @@ public class AndroidSettingsHomePage extends AndroidSettingsHome {
 	
 	public AndroidSettingsHomePage() {
 		PageFactory.initElements(Driver.get(), this);
+		BasePage.setScreenDimensionsLocalVariable();
 	}
 	
 	public WebElement getInSearchBar() {
@@ -67,14 +68,19 @@ public class AndroidSettingsHomePage extends AndroidSettingsHome {
 	public boolean validarIcones(WebElement iconeParaValidar, int indexDoIconeNaLista, double percetualDeDiferencaTolerado) {
 		//BasePage.getAndSaveImageFromObject(iconeParaValidar, StaticResources.IMAGE_RESOURCES_DIR, itemTitle.get(indexDoIconeNaLista));
 		BasePage.getAndSaveImageFromObject(iconeParaValidar, StaticResources.IMAGE_SCREENSHOTS, itemTitle.get(indexDoIconeNaLista));
-		double result = BasePage.compareImages(
-				StaticResources.IMAGE_SCREENSHOTS +"\\"+ itemTitle.get(indexDoIconeNaLista)+".png", 
-				StaticResources.IMAGE_RESOURCES_DIR +"\\"+ itemTitle.get(indexDoIconeNaLista)+".png", 
-				percetualDeDiferencaTolerado);
-		if( result > percetualDeDiferencaTolerado) {
-			ReportManager.setTestLogAndScreenshot("Erro ao comparar a imagem "+itemTitle.get(indexDoIconeNaLista)+".\nTolerância aceita (%): " + percetualDeDiferencaTolerado+"Diferença encontrada (%): "+result);
+		double result = 0;
+		try {
+			result = BasePage.compareImages(
+					BasePage.getImageFile(StaticResources.IMAGE_SCREENSHOTS +"\\"+ itemTitle.get(indexDoIconeNaLista)+".png"), 
+					BasePage.getImageFile(StaticResources.IMAGE_RESOURCES_DIR +"\\"+ itemTitle.get(indexDoIconeNaLista)+".png")
+					);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return result >= 0.0 && result <= percetualDeDiferencaTolerado;
+		if( result > percetualDeDiferencaTolerado) {
+			ReportManager.setTestLogAndScreenshot("Erro ao comparar a imagem "+itemTitle.get(indexDoIconeNaLista)+".<br>Diferença tolerável (%): " + percetualDeDiferencaTolerado+"<br>Diferença encontrada (%): "+result);
+		}
+		return result <= percetualDeDiferencaTolerado;
 	}
 	
 	public WebElement getElementIcone( int index ) {

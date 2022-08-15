@@ -42,21 +42,20 @@ public class AndroidSettingsHomeSteps {
 		icons = new ArrayList<WebElement>();
 		ReportManager.setTestLogAndScreenshot("Verificando ícones na lista...");
 		for (int i = 0; i < page.getTitlesExpectedTexts().size(); i++) {
-			//General.scrollToElement_byText(page.getTitlesExpectedTexts().get(i));
 			page.searchSettingsItem(i);
 			ReportManager.setTestLogAndScreenshot("Verificando ícones na lista...");
 			icons.add( page.getElementIcone(i) );
 		}
 	}
 	
-	@Then("valido os ícones estão de acordo com o esperado")
+	@Then("valido que os ícones estão de acordo com o esperado")
 	public void validoOsÍconesEstaoDeAcordoComOEsperado() {
     	ReportManager.setStepName(new Object(){}.getClass().getEnclosingMethod().getAnnotations()[0].toString());
 		page.retornarAoTopo();
 		ReportManager.setTestLog("Validando imagens da lista com os arquivos de referência.");
 		for (int i = 0; i < icons.size(); i++) {
 			page.ajustarElementoNaTela(icons.get(i));
-			Assert.assertTrue( "A imagem "+page.getTitlesExpectedTexts().get(i)+" não é equivalente à imagem de referência", page.validarIcones(icons.get(i), i, 0.0) );
+			Assert.assertTrue( "A imagem "+page.getTitlesExpectedTexts().get(i)+" não é equivalente à imagem de referência", page.validarIcones(icons.get(i), i, 2.0) );
 		}
 	}
 	
